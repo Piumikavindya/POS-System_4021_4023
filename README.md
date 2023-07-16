@@ -1,7 +1,7 @@
 # Point of Sale System
 
-Piumi Kavindya – 4021
-Kithurshika – 4023
+-Piumi Kavindya – 4021
+-Kithurshika – 4023
 
 ## POS System - Retail Business
 
