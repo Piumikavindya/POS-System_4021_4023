@@ -1,0 +1,106 @@
+﻿<Window x:Class="POS_System_1.Views.SaleProductView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:POS_System_1.ViewModels"
+        mc:Ignorable="d"
+        Title="SaleProductView" Height="450" Width="800"
+         WindowStartupLocation="CenterScreen"
+        xmlns:fa="http://schemas.fontawesome.com/icons/"
+        xmlns:controls="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
+        d:DataContext="{d:DesignInstance Type=local:SaleProductViewModel}">
+    <Grid>
+
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0.1,0.0" EndPoint="0.9,1.0">
+                <GradientStop Color="#00DFA2" Offset='0.0'/>
+
+                <GradientStop Color="#9DB2BF" Offset='01.0'/>
+
+
+
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Border Height="375" Width="800" VerticalAlignment="Top"  CornerRadius="40 40 0 150" Background="#393646">
+            <StackPanel Orientation="Horizontal" Margin="0,0,-390,0">
+                <StackPanel Width="200">
+                    <Image Margin="0 80 0 0" Source="/Images/Artboard 9.png" Stretch="Fill" RenderTransformOrigin="0.65,0.259" Height="183" Width="201"/>
+
+                </StackPanel>
+                <StackPanel Width="250">
+                    <StackPanel Grid.Row="0" Grid.Column="0" Margin="0 30 0 0" Orientation="Vertical">
+
+                        <Label Content="Product Id:" Opacity=".8" Foreground="#C4DFDF" FontSize="16" />
+                        <TextBox Text="{Binding ProductId, Mode=TwoWay}"/>
+
+                        <Label Content="Product Quantity:" Opacity=".8" Foreground="#C4DFDF" FontSize="16"/>
+                        <TextBox Text="{Binding SellingQuantity, Mode=TwoWay}"/>
+
+                        <Button Width="150" Height="40" Margin="10" Command="{Binding AddToCartCommand}" Style="{StaticResource MyButtonStyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <controls:ImageAwesome Icon="CartPlus" Foreground="#C4DFDF" Height="20" Width="20" Margin="0 0 10 0"/>
+                                <TextBlock Text="Add to Cart"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="0,30,0,30">
+                        
+                            <Label Content="Total Quantity:" Foreground="#00FFCA" FontSize="16"/>
+                            <TextBlock Text="{Binding TotalQuantity}" Margin="0 0 0  0" Foreground="#C4DFDF" Width="81"/>
+                      
+                        
+                            <Label Content="Total Price:" Foreground="#00FFCA" FontSize="16"/>
+                            <TextBlock Text="{Binding TotalPrice}" Foreground="#C4DFDF" Width="100"/>
+                      
+
+
+                        <Button Width="180" Height="40" Margin="10" Command="{Binding CompleteSaleCommand}" Style="{StaticResource MyButtonStyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <controls:ImageAwesome Icon="Dollar" Foreground="#C4DFDF" Height="20" Width="20" Margin="0 0 10 0"/>
+                                <TextBlock Text="Complete Sale"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Width="350">
+                    <Label Content="Shopping Cart" Grid.Column="1" FontSize="20" Foreground="#00FFCA" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="30,20,10,400"/>
+                    <ListView Grid.Column="1" Grid.Row="0" ItemsSource="{Binding ShoppingCartItems}" Width="250" HorizontalAlignment="Center" Margin="80,-400,50,120">
+                        <ListView.View>
+                            <GridView>
+                                
+                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="120"/>
+                                <GridViewColumn Header="Product Quantity" DisplayMemberBinding="{Binding SellingQuantity}" Width="60"/>
+                                <GridViewColumn Header="Product Price" DisplayMemberBinding="{Binding Price}" Width="70"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </StackPanel>
+
+
+
+
+            </StackPanel>
+        </Border>
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="230"/>
+
+
+        </Grid.ColumnDefinitions>
+
+
+
+
+
+
+
+    </Grid>
+</Window>

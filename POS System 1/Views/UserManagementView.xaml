@@ -1,0 +1,100 @@
+﻿<Window x:Class="POS_System_1.Views.UserManagementView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewmodels="clr-namespace:POS_System_1.ViewModels"
+        xmlns:helpers="clr-namespace:POS_System_1.Helpers"
+        Title="UserManagementView" Height="450" Width="800"
+            WindowStartupLocation="CenterScreen"
+        xmlns:fa="http://schemas.fontawesome.com/icons/"
+xmlns:controls="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF">
+    <Window.DataContext>
+        <viewmodels:UserManagementViewModel />
+    </Window.DataContext>
+
+    <Grid>
+
+        <Border  CornerRadius="40">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0.1,0.0" EndPoint="0.9,1.0">
+                    <GradientStop Color="#00DFA2" Offset='0.0'/>
+
+                    <GradientStop Color="#9DB2BF" Offset='01.0'/>
+
+
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <Border Height="375" VerticalAlignment="Top"  CornerRadius="40 40 0 150" Background="#393646">
+            <StackPanel  Orientation="Horizontal">
+                <StackPanel Width="250">
+                    <Image  Source="/Images/Artboard 9.png" Stretch="Fill" RenderTransformOrigin="0,0" Height="177" Width="206" Margin="-0 90 10 10"/>
+                </StackPanel >
+
+
+                <StackPanel Width="280">
+                    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Margin="20" >
+                        <Label Content="Username:" FontSize="18" Opacity=".8" Foreground="#C4DFDF" Width="159" />
+                        <TextBox Text="{Binding NewUsername}" Width="200" Margin="10"  Height="30" />
+                        <Label Content="Defult Password:" FontSize="18" Opacity=".8" Foreground="#C4DFDF" Width="158" />
+                        <TextBox Text="{Binding NewPassword}" Width="200" Margin="10"  Height="30"/>
+
+
+                        <Button Width="150" Height="40" Margin="30"  Style="{StaticResource MyButtonStyle}" Command="{Binding CreateUserCommand}">
+                            <StackPanel Orientation="Horizontal">
+                                <controls:ImageAwesome Icon="Userplus" Foreground="#C4DFDF"  Height="20" Width="20" Margin="0 0 5 0"/>
+                                <TextBlock Text="Create User"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Width="150" Height="40"  Style="{StaticResource MyButtonStyle}" Command="{Binding DeleteUserCommand}">
+                            <StackPanel Orientation="Horizontal">
+                                <controls:ImageAwesome Icon="UserTimes" Foreground="#C4DFDF" Height="20" Width="20" Margin="0 0 5 0" />
+                                <TextBlock Text="Delete User" />
+                            </StackPanel>
+                        </Button>
+
+
+
+                    </StackPanel>
+
+                </StackPanel>
+
+                <StackPanel Width=" 270">
+                    <Label Content="User List" Foreground="#00FFCA" FontWeight="DemiBold" HorizontalAlignment="Center" Margin="20 30 0 0" FontSize="20"/>
+                    <ListView Grid.Column="2"  Foreground="black" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" Margin="10">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Username" DisplayMemberBinding="{Binding Username}" Width="120" />
+                                <GridViewColumn Header="Defult Password" DisplayMemberBinding="{Binding  Password}" Width="120" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+
+                </StackPanel>
+            </StackPanel>
+
+
+
+        </Border>
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+
+        </Grid.ColumnDefinitions>
+
+
+
+
+    </Grid>
+</Window>
